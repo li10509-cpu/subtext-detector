@@ -3,126 +3,102 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>话外音探测器</title>
+<title>高情商工具箱 · 话外音+怼人不伤人</title>
 <style>
 * {
     box-sizing: border-box;
     margin: 0;
     padding: 0;
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
 }
-
 body {
-    background-color: #f7f8fa;
+    background: #f7f8fa;
     padding: 20px;
     max-width: 600px;
     margin: 0 auto;
     color: #333;
-    line-height: 1.6;
 }
-
 .card {
     background: white;
     border-radius: 16px;
-    padding: 28px;
-    box-shadow: 0 4px 20px rgba(0,0,0,0.08);
-    margin-bottom: 24px;
+    padding: 24px;
+    box-shadow: 0 4px 16px rgba(0,0,0,0.06);
+    margin-bottom: 20px;
 }
-
 h1 {
-    font-size: 24px;
-    color: #222;
-    margin-bottom: 8px;
+    font-size: 22px;
     text-align: center;
+    margin-bottom: 8px;
+    color: #222;
 }
-
 .subtitle {
     text-align: center;
-    color: #666;
-    margin-bottom: 24px;
     font-size: 14px;
+    color: #666;
+    margin-bottom: 20px;
 }
-
-textarea {
-    width: 100%;
-    padding: 14px 16px;
-    border: 1px solid #e0e0e0;
-    border-radius: 12px;
-    font-size: 16px;
-    resize: none;
-    min-height: 120px;
-    outline: none;
-    transition: border 0.2s;
-}
-
-textarea:focus {
-    border-color: #4a90e2;
-}
-
-.btn-group {
+.tab {
     display: flex;
     gap: 10px;
-    margin-top: 16px;
+    margin-bottom: 16px;
 }
-
-button {
+.tab button {
     flex: 1;
+    padding: 10px;
+    border-radius: 12px;
+    border: none;
+    background: #e5e7eb;
+    cursor: pointer;
+    font-size: 15px;
+}
+.tab button.active {
+    background: #4a90e2;
+    color: white;
+}
+.page {
+    display: none;
+}
+.page.active {
+    display: block;
+}
+select, textarea {
+    width: 100%;
+    padding: 12px 14px;
+    border: 1px solid #e0e0e0;
+    border-radius: 12px;
+    font-size: 15px;
+    margin-bottom: 12px;
+    outline: none;
+}
+button {
+    width: 100%;
     padding: 14px;
+    background: #4a90e2;
+    color: white;
     border: none;
     border-radius: 12px;
     font-size: 16px;
-    font-weight: 500;
     cursor: pointer;
-    transition: background 0.2s;
+    margin-bottom: 10px;
 }
-
-.btn-primary {
-    background-color: #4a90e2;
-    color: white;
-}
-
-.btn-primary:hover {
-    background-color: #357abd;
-}
-
-.btn-secondary {
-    background-color: #e5e7eb;
+button.secondary {
+    background: #e5e7eb;
     color: #333;
 }
-
-.btn-secondary:hover {
-    background-color: #d1d5db;
-}
-
 .result {
     white-space: pre-line;
     line-height: 1.7;
     font-size: 15px;
+    padding: 10px 0;
 }
-
-.result strong {
-    color: #222;
-}
-
 .copy-btn {
-    margin-top: 16px;
     background: #f5f5f5;
     border: 1px solid #ddd;
-    padding: 8px 14px;
+    padding: 8px 12px;
     border-radius: 8px;
-    cursor: pointer;
     font-size: 14px;
-}
-
-.copy-btn:hover {
-    background: #eee;
-}
-
-.footer {
-    text-align: center;
-    font-size: 12px;
-    color: #999;
-    margin-top: 30px;
+    cursor: pointer;
+    margin-top: 10px;
 }
 </style>
 </head>
@@ -130,72 +106,151 @@ button {
 <body>
 
 <div class="card">
-    <h1>🗣️ 话外音探测器</h1>
-    <div class="subtitle">读懂一句话背后的真实情绪</div>
+    <h1>🧠 高情商工具箱</h1>
+    <div class="subtitle">话外音看透 · 怼人不伤人</div>
 
-    <textarea id="text" placeholder="请输入你想分析的话，例如：你说的都对"></textarea>
-    
-    <div class="btn-group">
-        <button class="btn-primary" onclick="analyze()">开始分析</button>
-        <button class="btn-secondary" onclick="clearInput()">清空内容</button>
+    <div class="tab">
+        <button class="tabbtn active" onclick="tab(1)">话外音分析</button>
+        <button class="tabbtn" onclick="tab(2)">怼人不伤人</button>
+    </div>
+
+    <!-- 页面1：话外音 -->
+    <div id="page1" class="page active">
+        <textarea id="text1" placeholder="输入一句话，我帮你看话外音"></textarea>
+        <button onclick="analyze()">分析话外音</button>
+        <button class="secondary" onclick="clear1()">清空</button>
+    </div>
+
+    <!-- 页面2：怼人不伤人 -->
+    <div id="page2" class="page">
+        <select id="scene">
+            <option value="">选择场景</option>
+            <option value="no_eat">不想一起吃饭</option>
+            <option value="no_help">不想帮忙</option>
+            <option value="no_invite">拒绝邀约</option>
+            <option value="yinyang">对方阴阳怪气</option>
+            <option value="no">温和但坚定说不</option>
+        </select>
+        <button onclick="showLines()">生成潮酷话术</button>
+        <button class="secondary" onclick="clear2()">清空</button>
     </div>
 </div>
 
 <div class="card">
-    <h3>📊 分析结果</h3>
-    <br>
-    <div id="result" class="result">请输入文字并点击分析</div>
-    <button class="copy-btn" onclick="copyResult()" style="display:none;" id="copyBtn">复制结果</button>
+    <h3>📝 结果：</h3>
+    <div class="result" id="result">请选择功能</div>
+    <button class="copy-btn" id="copyBtn" style="display:none;" onclick="copyResult()">复制</button>
 </div>
 
-<div class="footer">我的AI小工具 · 安全简洁</div>
-
 <script>
-// 分析
+// 切换标签
+function tab(n) {
+    document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+    document.querySelectorAll('.tabbtn').forEach(b => b.classList.remove('active'));
+    document.getElementById('page'+n).classList.add('active');
+    document.querySelectorAll('.tabbtn')[n-1].classList.add('active');
+    document.getElementById('result').innerText = "请选择功能";
+    document.getElementById('copyBtn').style.display = "none";
+}
+
+// ==================== 1. 话外音分析 ====================
 function analyze() {
-    let t = document.getElementById("text").value.trim();
+    let t = document.getElementById("text1").value.trim();
     if (!t) {
-        document.getElementById("result").innerText = "请先输入内容";
+        document.getElementById("result").innerText = "请输入一句话";
         return;
     }
-
-    let res = `【你说的话】
+    let res = `【你输入的话】
 ${t}
 
 【表面意思】
-对方在表达顺从、认同或结束对话
+字面表达的内容
 
 【真实话外音】
-- 不想再争论
-- 内心并不认同
-- 情绪有点失望、无奈、敷衍
-- 其实希望被理解、被温柔对待
+- 可能在掩饰情绪
+- 不想直接冲突
+- 内心有情绪但不说破
+- 希望被理解，而不是被讲道理
 
 【潜台词】
-我不想吵了，你说什么都好，但我心里并不舒服
+我有情绪，但我不想明说，希望你能懂。
 
-【建议】
-不要继续讲道理，
-可以轻声问：你是不是有点委屈？
-比争对错更有用。`;
+【态度】
+温和、克制、有边界、不伤人。`;
 
     document.getElementById("result").innerText = res;
     document.getElementById("copyBtn").style.display = "block";
 }
 
-// 清空
-function clearInput() {
-    document.getElementById("text").value = "";
-    document.getElementById("result").innerText = "请输入文字并点击分析";
+function clear1() {
+    document.getElementById("text1").value = "";
+    document.getElementById("result").innerText = "请选择功能";
     document.getElementById("copyBtn").style.display = "none";
 }
 
-// 复制结果
+// ==================== 2. 怼人不伤人 · 多选 ====================
+function showLines() {
+    let s = document.getElementById("scene").value;
+    let r = "";
+
+    if (s === "no_eat") {
+        r = `【不想一起吃饭·潮酷多选】
+1. 我今天想沉浸式干饭，就不组队啦～
+2. 我需要独处充电，你们去吃吧！
+3. 谢谢邀请～我今天想自己待一会儿哈。
+4. 我今天胃口很专一，只想自己慢慢吃～
+5. 社恐模式开启，就不跟大家一起啦😅`;
+
+    } else if (s === "no_help") {
+        r = `【不想帮忙·潮酷多选】
+1. 我自己都忙冒烟了，实在帮不动啦～
+2. 我能力有限，这块真帮不了你哦。
+3. 我节奏很满，帮不到你，抱歉啦。
+4. 这个我不太擅长，你找别人更靠谱～
+5. 我怕帮倒忙，就不参与啦。`;
+
+    } else if (s === "no_invite") {
+        r = `【拒绝邀约·潮酷多选】
+1. 谢谢宝！我那天有安排，就不去啦～
+2. 好意心领！我去不了，你们玩开心！
+3. 我那天档期满啦，下次再约～
+4. 我就不加入啦，你们好好玩！
+5. 我今天能量不足，就宅着啦～`;
+
+    } else if (s === "yinyang") {
+        r = `【怼阴阳怪气·潮酷不伤人】
+1. 你这么说我有点听不懂，直说呗～
+2. 有话好好说，不用拐弯哦。
+3. 我听着有点不舒服，咱们正常沟通哈。
+4. 阴阳我就没必要啦，有事直接讲。
+5. 我比较直，你这样我会误会的哦。`;
+
+    } else if (s === "no") {
+        r = `【坚定说不·潮酷多选】
+1. 我理解，但我不太方便，就不啦～
+2. 我不想勉强自己，这个不参与。
+3. 我这边不太合适，就拒绝啦，谢谢理解。
+4. 我选择不做，尊重彼此就好～
+5. 我不方便，就不啦，你懂的哈。`;
+
+    } else {
+        r = "请先选一个场景哦～";
+    }
+
+    document.getElementById("result").innerText = r;
+    document.getElementById("copyBtn").style.display = "block";
+}
+
+function clear2() {
+    document.getElementById("scene").selectedIndex = 0;
+    document.getElementById("result").innerText = "请选择功能";
+    document.getElementById("copyBtn").style.display = "none";
+}
+
+// 复制
 function copyResult() {
-    const text = document.getElementById("result").innerText;
-    navigator.clipboard.writeText(text).then(() => {
-        alert("复制成功！");
-    });
+    navigator.clipboard.writeText(document.getElementById("result").innerText)
+        .then(() => alert("复制成功！"));
 }
 </script>
 
