@@ -3,255 +3,336 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>高情商工具箱 · 话外音+怼人不伤人</title>
+<title>高情商说话艺术大全</title>
 <style>
-* {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-}
-body {
-    background: #f7f8fa;
-    padding: 20px;
-    max-width: 600px;
-    margin: 0 auto;
-    color: #333;
-}
-.card {
-    background: white;
-    border-radius: 16px;
-    padding: 24px;
-    box-shadow: 0 4px 16px rgba(0,0,0,0.06);
-    margin-bottom: 20px;
-}
-h1 {
-    font-size: 22px;
-    text-align: center;
-    margin-bottom: 8px;
-    color: #222;
-}
-.subtitle {
-    text-align: center;
-    font-size: 14px;
-    color: #666;
-    margin-bottom: 20px;
-}
-.tab {
-    display: flex;
-    gap: 10px;
-    margin-bottom: 16px;
-}
-.tab button {
-    flex: 1;
-    padding: 10px;
-    border-radius: 12px;
-    border: none;
-    background: #e5e7eb;
-    cursor: pointer;
-    font-size: 15px;
-}
-.tab button.active {
-    background: #4a90e2;
-    color: white;
-}
-.page {
-    display: none;
-}
-.page.active {
-    display: block;
-}
-select, textarea {
-    width: 100%;
-    padding: 12px 14px;
-    border: 1px solid #e0e0e0;
-    border-radius: 12px;
-    font-size: 15px;
-    margin-bottom: 12px;
-    outline: none;
-}
-button {
-    width: 100%;
-    padding: 14px;
-    background: #4a90e2;
-    color: white;
-    border: none;
-    border-radius: 12px;
-    font-size: 16px;
-    cursor: pointer;
-    margin-bottom: 10px;
-}
-button.secondary {
-    background: #e5e7eb;
-    color: #333;
-}
-.result {
-    white-space: pre-line;
-    line-height: 1.7;
-    font-size: 15px;
-    padding: 10px 0;
-}
-.copy-btn {
-    background: #f5f5f5;
-    border: 1px solid #ddd;
-    padding: 8px 12px;
-    border-radius: 8px;
-    font-size: 14px;
-    cursor: pointer;
-    margin-top: 10px;
-}
+*{box-sizing:border-box;margin:0;padding:0;font-family:system-ui,sans-serif}
+body{background:#f7f8fa;padding:20px;max-width:600px;margin:0 auto}
+.card{background:#fff;border-radius:16px;padding:24px;margin-bottom:20px;box-shadow:0 4px 16px rgba(0,0,0,0.06)}
+h1{font-size:22px;text-align:center;margin-bottom:8px}
+.sub{text-align:center;color:#666;margin-bottom:20px;font-size:14px}
+.tab{display:flex;gap:10px;margin-bottom:16px}
+.tab button{flex:1;padding:10px;border-radius:12px;border:none;background:#e5e7eb;cursor:pointer}
+.tab button.active{background:#4a90e2;color:#fff}
+.page{display:none}
+.page.active{display:block}
+select,textarea{width:100%;padding:12px 14px;border:1px solid #e0e0e0;border-radius:12px;margin-bottom:12px;font-size:15px}
+button{width:100%;padding:14px;background:#4a90e2;color:#fff;border:none;border-radius:12px;font-size:16px;cursor:pointer;margin-bottom:10px}
+.sec{background:#e5e7eb;color:#333}
+.result{white-space:pre-line;line-height:1.8;margin-top:10px;font-size:15px}
+.copy{margin-top:16px;padding:8px 12px;background:#f5f5f5;border:1px solid #ddd;border-radius:8px;cursor:pointer}
 </style>
 </head>
 
 <body>
 
 <div class="card">
-    <h1>🧠 高情商工具箱</h1>
-    <div class="subtitle">话外音看透 · 怼人不伤人</div>
+  <h1>🗣️ 高情商说话艺术大全</h1>
+  <div class="sub">话外音看透 | 怼人不伤人 | 高情商回复</div>
 
-    <div class="tab">
-        <button class="tabbtn active" onclick="tab(1)">话外音分析</button>
-        <button class="tabbtn" onclick="tab(2)">怼人不伤人</button>
-    </div>
+  <div class="tab">
+    <button class="t1 active" onclick="p(1)">话外音分析</button>
+    <button class="t2" onclick="p(2)">怼人不伤人</button>
+    <button class="t3" onclick="p(3)">说话的艺术</button>
+  </div>
 
-    <!-- 页面1：话外音 -->
-    <div id="page1" class="page active">
-        <textarea id="text1" placeholder="输入一句话，我帮你看话外音"></textarea>
-        <button onclick="analyze()">分析话外音</button>
-        <button class="secondary" onclick="clear1()">清空</button>
-    </div>
+  <div id="p1" class="page active">
+    <select id="s1">
+      <option value="">选择一句话</option>
+      <option value="a1">你说的都对</option>
+      <option value="a2">随便你</option>
+      <option value="a3">我没事</option>
+      <option value="a4">嗯哦啊</option>
+      <option value="a5">不用管我</option>
+      <option value="a6">算了，不麻烦了</option>
+      <option value="a7">我怎么敢生气</option>
+      <option value="a8">你开心就好</option>
+    </select>
+    <button onclick="an()">查看话外音</button>
+    <button class="sec" onclick="c1()">清空</button>
+  </div>
 
-    <!-- 页面2：怼人不伤人 -->
-    <div id="page2" class="page">
-        <select id="scene">
-            <option value="">选择场景</option>
-            <option value="no_eat">不想一起吃饭</option>
-            <option value="no_help">不想帮忙</option>
-            <option value="no_invite">拒绝邀约</option>
-            <option value="yinyang">对方阴阳怪气</option>
-            <option value="no">温和但坚定说不</option>
-        </select>
-        <button onclick="showLines()">生成潮酷话术</button>
-        <button class="secondary" onclick="clear2()">清空</button>
-    </div>
+  <div id="p2" class="page">
+    <select id="s2">
+      <option value="">选择场景</option>
+      <option value="b1">不想一起吃饭</option>
+      <option value="b2">不想帮忙</option>
+      <option value="b3">拒绝邀约</option>
+      <option value="b4">对方阴阳怪气</option>
+      <option value="b5">不想借东西</option>
+      <option value="b6">不想聊天</option>
+      <option value="b7">不想加班</option>
+      <option value="b8">不想回答隐私</option>
+    </select>
+    <button onclick="dui()">生成话术</button>
+    <button class="sec" onclick="c2()">清空</button>
+  </div>
+
+  <div id="p3" class="page">
+    <select id="s3">
+      <option value="">选择场景</option>
+      <option value="c1">安慰别人</option>
+      <option value="c2">赞美别人</option>
+      <option value="c3">道歉</option>
+      <option value="c4">请求帮忙</option>
+      <option value="c5">结束对话</option>
+      <option value="c6">职场沟通</option>
+      <option value="c7">家庭相处</option>
+      <option value="c8">社交场合</option>
+    </select>
+    <button onclick="art()">查看艺术</button>
+    <button class="sec" onclick="c3()">清空</button>
+  </div>
 </div>
 
 <div class="card">
-    <h3>📝 结果：</h3>
-    <div class="result" id="result">请选择功能</div>
-    <button class="copy-btn" id="copyBtn" style="display:none;" onclick="copyResult()">复制</button>
+  <h3>📝 结果展示</h3>
+  <div class="result" id="result">请选择内容查看</div>
+  <button class="copy" onclick="copy()" id="copyBtn" style="display:none">复制全文</button>
 </div>
 
 <script>
-// 切换标签
-function tab(n) {
-    document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
-    document.querySelectorAll('.tabbtn').forEach(b => b.classList.remove('active'));
-    document.getElementById('page'+n).classList.add('active');
-    document.querySelectorAll('.tabbtn')[n-1].classList.add('active');
-    document.getElementById('result').innerText = "请选择功能";
-    document.getElementById('copyBtn').style.display = "none";
+function p(n){
+  document.querySelectorAll('.page').forEach(x=>x.classList.remove('active'))
+  document.querySelectorAll('.tab button').forEach(x=>x.classList.remove('active'))
+  document.getElementById('p'+n).classList.add('active')
+  document.querySelector('.t'+n).classList.add('active')
+  document.getElementById('result').innerText="请选择内容查看"
+  document.getElementById('copyBtn').style.display="none"
 }
 
-// ==================== 1. 话外音分析 ====================
-function analyze() {
-    let t = document.getElementById("text1").value.trim();
-    if (!t) {
-        document.getElementById("result").innerText = "请输入一句话";
-        return;
-    }
-    let res = `【你输入的话】
-${t}
-
-【表面意思】
-字面表达的内容
-
-【真实话外音】
-- 可能在掩饰情绪
-- 不想直接冲突
-- 内心有情绪但不说破
-- 希望被理解，而不是被讲道理
-
-【潜台词】
-我有情绪，但我不想明说，希望你能懂。
-
-【态度】
-温和、克制、有边界、不伤人。`;
-
-    document.getElementById("result").innerText = res;
-    document.getElementById("copyBtn").style.display = "block";
+function an(){
+  let v=document.getElementById('s1').value;let r=""
+  if(v=="a1")r=`【你说的都对】
+话外音：我不想跟你吵，我懒得解释，我不认同，但我放弃沟通了。
+情绪：委屈、无奈、失望、敷衍。
+潜台词：我说不过你，也不想被你否定，你赢了，但我不开心。`
+  else if(v=="a2")r=`【随便你】
+话外音：我根本不在乎，也不想参与，你爱怎样怎样。
+情绪：冷淡、无所谓、轻微抵触。
+潜台词：你自己决定吧，别来问我，问了我也不想说。`
+  else if(v=="a3")r=`【我没事】
+话外音：我有事，但我不想说，我不想被你追问。
+情绪：难过、压抑、失望。
+潜台词：我需要你懂我，而不是问我有没有事。`
+  else if(v=="a4")r=`【嗯、哦、啊】
+话外音：我不想聊了，我在敷衍，我在结束对话。
+情绪：无聊、疲惫、不想回应。
+潜台词：别跟我说话了，我没兴趣。`
+  else if(v=="a5")r=`【不用管我】
+话外音：我希望你管我，但我嘴硬，我怕你不真心。
+情绪：脆弱、渴望关心、口是心非。
+潜台词：你能不能主动抱抱我、安慰我？`
+  else if(v=="a6")r=`【算了，不麻烦了】
+话外音：我很需要，但我怕你嫌我烦，我不敢开口。
+情绪：自卑、小心翼翼、委屈。
+潜台词：如果你真的愿意，你会坚持帮我。`
+  else if(v=="a7")r=`【我怎么敢生气】
+话外音：我非常生气，但我不敢表现，我在阴阳你。
+情绪：愤怒、讽刺、压抑。
+潜台词：你让我很不爽，我记在心里了。`
+  else if(v=="a8")r=`【你开心就好】
+话外音：我一点都不开心，但我不想争了。
+情绪：失望、无奈、放弃沟通。
+潜台词：我迁就你，但我牺牲了自己。`
+  else r="请选择一句话"
+  document.getElementById('result').innerText=r
+  document.getElementById('copyBtn').style.display="block"
 }
 
-function clear1() {
-    document.getElementById("text1").value = "";
-    document.getElementById("result").innerText = "请选择功能";
-    document.getElementById("copyBtn").style.display = "none";
-}
-
-// ==================== 2. 怼人不伤人 · 多选 ====================
-function showLines() {
-    let s = document.getElementById("scene").value;
-    let r = "";
-
-    if (s === "no_eat") {
-        r = `【不想一起吃饭·潮酷多选】
+function dui(){
+  let v=document.getElementById('s2').value;let r=""
+  if(v=="b1")r=`【不想一起吃饭·10条】
 1. 我今天想沉浸式干饭，就不组队啦～
 2. 我需要独处充电，你们去吃吧！
-3. 谢谢邀请～我今天想自己待一会儿哈。
-4. 我今天胃口很专一，只想自己慢慢吃～
-5. 社恐模式开启，就不跟大家一起啦😅`;
-
-    } else if (s === "no_help") {
-        r = `【不想帮忙·潮酷多选】
+3. 谢谢邀请～我今天想自己安静待一会儿。
+4. 我社恐上线，就不跟大家一起啦😅
+5. 我今天想简单吃点，就不麻烦啦。
+6. 我最近在减脂，想自己控制一下饮食。
+7. 我手头有点事，想边吃边处理。
+8. 我今天胃口一般，不想影响大家。
+9. 我想早点吃完休息，就不一起啦。
+10. 我今天想自己待着，谢谢理解～`
+  else if(v=="b2")r=`【不想帮忙·10条】
 1. 我自己都忙冒烟了，实在帮不动啦～
-2. 我能力有限，这块真帮不了你哦。
-3. 我节奏很满，帮不到你，抱歉啦。
-4. 这个我不太擅长，你找别人更靠谱～
-5. 我怕帮倒忙，就不参与啦。`;
-
-    } else if (s === "no_invite") {
-        r = `【拒绝邀约·潮酷多选】
+2. 我能力有限，怕帮倒忙，就不参与啦。
+3. 我这边节奏很满，真的抽不出时间哦。
+4. 我理解你，但我不方便，就不啦～
+5. 我不想勉强自己，也不想耽误你。
+6. 这个我不擅长，你找别人更靠谱。
+7. 我今天状态不好，帮不上忙。
+8. 我有自己的事要优先处理，抱歉。
+9. 我不想乱帮忙，反而给你添乱。
+10. 我原则上不帮这类忙，希望理解。`
+  else if(v=="b3")r=`【拒绝邀约·10条】
 1. 谢谢宝！我那天有安排，就不去啦～
 2. 好意心领！我去不了，你们玩开心！
 3. 我那天档期满啦，下次再约～
 4. 我就不加入啦，你们好好玩！
-5. 我今天能量不足，就宅着啦～`;
-
-    } else if (s === "yinyang") {
-        r = `【怼阴阳怪气·潮酷不伤人】
-1. 你这么说我有点听不懂，直说呗～
-2. 有话好好说，不用拐弯哦。
-3. 我听着有点不舒服，咱们正常沟通哈。
+5. 我今天能量不足，就宅着啦～
+6. 我那天刚好有事，去不了哦。
+7. 我不太适合这类场合，就不啦。
+8. 我想在家休息，就不出去啦。
+9. 我那天有重要安排，去不了。
+10. 谢谢邀请，我就不参加啦～`
+  else if(v=="b4")r=`【怼阴阳怪气·10条】
+1. 你这么说我有点听不懂，有话直说呗～
+2. 咱们正常沟通就好，不用拐弯哦。
+3. 我听着有点不舒服，咱们好好说。
 4. 阴阳我就没必要啦，有事直接讲。
-5. 我比较直，你这样我会误会的哦。`;
-
-    } else if (s === "no") {
-        r = `【坚定说不·潮酷多选】
-1. 我理解，但我不太方便，就不啦～
-2. 我不想勉强自己，这个不参与。
-3. 我这边不太合适，就拒绝啦，谢谢理解。
-4. 我选择不做，尊重彼此就好～
-5. 我不方便，就不啦，你懂的哈。`;
-
-    } else {
-        r = "请先选一个场景哦～";
-    }
-
-    document.getElementById("result").innerText = r;
-    document.getElementById("copyBtn").style.display = "block";
+5. 我比较直，你这样我会误会的哦。
+6. 你这话里有话，我不太喜欢。
+7. 咱们有话明说，别绕圈子。
+8. 你这样说话，会影响彼此心情。
+9. 我不喜欢猜来猜去，直说就好。
+10. 好好说话，我们还能好好聊。`
+  else if(v=="b5")r=`【不想借东西·10条】
+1. 这个我自己常用，不太方便外借哦。
+2. 我比较爱惜东西，怕借出去有磨损。
+3. 我自己随时要用，就不借啦。
+4. 这个是私人用品，不太方便借。
+5. 我之前借出去出过问题，现在不借了。
+6. 我自己离不开，就不借啦。
+7. 我怕你用坏，到时候大家尴尬。
+8. 这个对我很重要，不借哦。
+9. 我有洁癖，私人东西不外借。
+10. 我不方便借，希望理解。`
+  else if(v=="b6")r=`【不想聊天·10条】
+1. 我现在有点忙，晚点再聊哈。
+2. 我想安静一会儿，先不聊啦。
+3. 我现在没心情聊天，抱歉哦。
+4. 我手头有事，先不跟你聊啦。
+5. 我今天话很少，就不聊啦。
+6. 我需要点自己的时间，晚点说。
+7. 我现在不太想说话，理解一下。
+8. 我有点累，想休息一下，不聊啦。
+9. 我在处理事情，没空聊天哦。
+10. 我今天想闭嘴充电，不聊啦～`
+  else if(v=="b7")r=`【不想加班·10条】
+1. 我今天身体不舒服，到点就得走。
+2. 我晚上有安排，没法加班。
+3. 我效率很高，上班时间能完成。
+4. 我家里有事，必须准时下班。
+5. 我今天状态不好，加班也没用。
+6. 我长期加班会影响效率，今天不加班。
+7. 我有重要私事，没法留下来。
+8. 我今天需要早点休息，不加班。
+9. 工作我会做好，但我不加班。
+10. 我今天不方便，就不加班啦。`
+  else if(v=="b8")r=`【不想回答隐私·10条】
+1. 这个我不太想聊，换个话题吧。
+2. 这是我的私人事情，就不说啦。
+3. 我不太喜欢聊这类话题哦。
+4. 这个保密，不告诉你啦～
+5. 我不想公开这个，理解一下。
+6. 我们聊点别的吧，这个我不说。
+7. 这是我的小秘密，不分享啦。
+8. 我不太习惯聊隐私，抱歉。
+9. 这个我不方便回答哦。
+10. 我想保留一点私人空间，谢谢。`
+  else r="请选择场景"
+  document.getElementById('result').innerText=r
+  document.getElementById('copyBtn').style.display="block"
 }
 
-function clear2() {
-    document.getElementById("scene").selectedIndex = 0;
-    document.getElementById("result").innerText = "请选择功能";
-    document.getElementById("copyBtn").style.display = "none";
+function art(){
+  let v=document.getElementById('s3').value;let r=""
+  if(v=="c1")r=`【安慰别人·10条】
+1. 我在呢，你慢慢说，我听着。
+2. 我懂你，你已经很棒了。
+3. 没关系，难过就哭一会儿，我陪你。
+4. 你不是一个人，我一直在。
+5. 我理解你的感受，换我我也难受。
+6. 不用硬撑，你可以脆弱。
+7. 不管怎么样，我都站你这边。
+8. 慢慢来，一切都会好起来的。
+9. 你已经很努力了，别责怪自己。
+10. 有我在，不用怕。`
+  else if(v=="c2")r=`【赞美别人·10条】
+1. 你真的很厉害，我特别佩服你。
+2. 跟你在一起特别舒服。
+3. 你做事真的很靠谱，让人放心。
+4. 你身上有种很吸引人的气质。
+5. 你太优秀了，还这么低调。
+6. 跟你聊天总能学到东西。
+7. 你真的很温柔，也很有力量。
+8. 你处理事情的方式太成熟了。
+9. 有你这样的人在，真的很好。
+10. 你真的很棒，不用怀疑自己。`
+  else if(v=="c3")r=`【道歉·10条】
+1. 对不起，是我没考虑周到。
+2. 我错了，我会改，你别生气。
+3. 抱歉让你不舒服了，我不是故意的。
+4. 是我的问题，我承担，我改正。
+5. 对不起，我说话太重了，我道歉。
+6. 我不该这样，我向你道歉。
+7. 抱歉让你失望了，我会调整。
+8. 是我疏忽了，对不起。
+9. 我不该冲动，对不起。
+10. 原谅我这一次，我会注意。`
+  else if(v=="c4")r=`【请求帮忙·10条】
+1. 你现在方便吗？我有件事想请你帮忙。
+2. 我实在搞不定，能不能请你帮我一下？
+3. 我想到你最靠谱，所以来麻烦你。
+4. 占用你一点时间，可以帮我个忙吗？
+5. 我遇到点困难，你能指点我一下吗？
+6. 如果你不方便也没关系，我理解。
+7. 能不能请你帮我一个小忙？感激不尽。
+8. 我需要你的帮助，不知道你方不方便。
+9. 这件事只有你能帮我了。
+10. 麻烦你了，事后我一定感谢你。`
+  else if(v=="c5")r=`【结束对话·10条】
+1. 我先去忙啦，回头再聊。
+2. 今天先聊到这里，我要休息了。
+3. 我这边有事，先不聊啦。
+4. 好啦，我们下次再聊。
+5. 我先撤啦，你也早点休息。
+6. 那就先这样，有事情再联系。
+7. 我要去做事了，回聊。
+8. 今天聊得很开心，先到这里。
+9. 我先下线啦，拜拜。
+10. 好，我结束啦，你忙你的。`
+  else if(v=="c6")r=`【职场沟通·10条】
+1. 我确认一下，我的理解是这样的…
+2. 这个我需要再确认一下，稍后回复你。
+3. 我会按时完成，有问题及时同步。
+4. 这件事我需要你的支持，我们配合一下。
+5. 我有个想法，想跟你同步一下。
+6. 我这边进度正常，没有风险。
+7. 我遇到一个问题，想请教你。
+8. 我会对结果负责，请放心。
+9. 我们对齐一下目标，避免偏差。
+10. 辛苦你了，非常感谢你的配合。`
+  else if(v=="c7")r=`【家庭相处·10条】
+1. 我理解你，我们好好说。
+2. 你辛苦了，我来帮你。
+3. 我们都是为了这个家好。
+4. 有话慢慢说，别着急。
+5. 我在乎你的感受。
+6. 谢谢你为家里付出这么多。
+7. 我们一起解决，不吵架。
+8. 你说的我听进去了。
+9. 我错了，我改。
+10. 我爱你，我们好好的。`
+  else if(v=="c8")r=`【社交场合·10条】
+1. 很高兴认识你。
+2. 你真有趣，跟你聊天很轻松。
+3. 你太厉害了，我要向你学习。
+4. 今天真的谢谢你的照顾。
+5. 你眼光真好。
+6. 跟你相处特别舒服。
+7. 你人真的很好。
+8. 希望以后常联系。
+9. 今天玩得很开心。
+10. 有机会我们再聚。`
+  else r="请选择场景"
+  document.getElementById('result').innerText=r
+  document.getElementById('copyBtn').style.display="block"
 }
 
-// 复制
-function copyResult() {
-    navigator.clipboard.writeText(document.getElementById("result").innerText)
-        .then(() => alert("复制成功！"));
-}
+function c1(){document.getElementById('s1').value="";document.getElementById('result').innerText="请选择内容查看";document.getElementById('copyBtn').style.display="none"}
+function c2(){document.getElementById('s2').value="";document.getElementById('result').innerText="请选择内容查看";document.getElementById('copyBtn').style.display="none"}
+function c3(){document.getElementById('s3').value="";document.getElementById('result').innerText="请选择内容查看";document.getElementById('copyBtn').style.display="none"}
+function copy(){navigator.clipboard.writeText(document.getElementById('result').innerText).then(()=>alert("复制成功！"))}
 </script>
 
 </body>
