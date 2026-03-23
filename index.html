@@ -59,22 +59,39 @@ textarea:focus {
     border-color: #4a90e2;
 }
 
+.btn-group {
+    display: flex;
+    gap: 10px;
+    margin-top: 16px;
+}
+
 button {
-    width: 100%;
+    flex: 1;
     padding: 14px;
-    background-color: #4a90e2;
-    color: white;
     border: none;
     border-radius: 12px;
     font-size: 16px;
     font-weight: 500;
-    margin-top: 16px;
     cursor: pointer;
     transition: background 0.2s;
 }
 
-button:hover {
+.btn-primary {
+    background-color: #4a90e2;
+    color: white;
+}
+
+.btn-primary:hover {
     background-color: #357abd;
+}
+
+.btn-secondary {
+    background-color: #e5e7eb;
+    color: #333;
+}
+
+.btn-secondary:hover {
+    background-color: #d1d5db;
 }
 
 .result {
@@ -85,6 +102,20 @@ button:hover {
 
 .result strong {
     color: #222;
+}
+
+.copy-btn {
+    margin-top: 16px;
+    background: #f5f5f5;
+    border: 1px solid #ddd;
+    padding: 8px 14px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 14px;
+}
+
+.copy-btn:hover {
+    background: #eee;
 }
 
 .footer {
@@ -103,18 +134,24 @@ button:hover {
     <div class="subtitle">读懂一句话背后的真实情绪</div>
 
     <textarea id="text" placeholder="请输入你想分析的话，例如：你说的都对"></textarea>
-    <button onclick="analyze()">开始分析</button>
+    
+    <div class="btn-group">
+        <button class="btn-primary" onclick="analyze()">开始分析</button>
+        <button class="btn-secondary" onclick="clearInput()">清空内容</button>
+    </div>
 </div>
 
 <div class="card">
     <h3>📊 分析结果</h3>
     <br>
     <div id="result" class="result">请输入文字并点击分析</div>
+    <button class="copy-btn" onclick="copyResult()" style="display:none;" id="copyBtn">复制结果</button>
 </div>
 
 <div class="footer">我的AI小工具 · 安全简洁</div>
 
 <script>
+// 分析
 function analyze() {
     let t = document.getElementById("text").value.trim();
     if (!t) {
@@ -143,6 +180,22 @@ ${t}
 比争对错更有用。`;
 
     document.getElementById("result").innerText = res;
+    document.getElementById("copyBtn").style.display = "block";
+}
+
+// 清空
+function clearInput() {
+    document.getElementById("text").value = "";
+    document.getElementById("result").innerText = "请输入文字并点击分析";
+    document.getElementById("copyBtn").style.display = "none";
+}
+
+// 复制结果
+function copyResult() {
+    const text = document.getElementById("result").innerText;
+    navigator.clipboard.writeText(text).then(() => {
+        alert("复制成功！");
+    });
 }
 </script>
 
